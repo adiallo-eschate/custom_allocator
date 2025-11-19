@@ -89,7 +89,7 @@ struct Heap {
     void coalesce_recurse_forward(Node* ptr){
         size_t block_size = ptr->size;
         char* pointer = reinterpret_cast<char*>(ptr);
-        char* next_mem_location = pointer + block_size + 1;
+        char* next_mem_location = pointer + block_size;
         Node* _next_mem_location = reinterpret_cast<Node*>(next_mem_location);
         Node* prev{nullptr};
         Node* head = list.get_head_ptr();
@@ -113,7 +113,7 @@ struct Heap {
 
         while(head){
 
-            size_t size_to_next_mem_block = head->size + 1;
+            size_t size_to_next_mem_block = head->size;
             char* __ptr = _ptr + size_to_next_mem_block;
             Node* ___ptr = reinterpret_cast<Node*>(__ptr);
 
